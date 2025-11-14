@@ -35,16 +35,13 @@ CREATE TABLE IF NOT EXISTS bookings (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (room_id) REFERENCES rooms(id),
     FOREIGN KEY (user_id) REFERENCES users(id),
-    -- Prevents double bookings in the same room at the same time
-    UNIQUE KEY unique_booking (room_id, booking_date, start_time) 
+    UNIQUE KEY unique_booking (room_id, booking_date, start_time)
 );
 
--- Insrt an admin acc
 -- PASSWORD: admin123
 INSERT IGNORE INTO users (email, password, name, role) VALUES 
-('admin@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Amministratore', 'admin');
+('admin@example.com', '$2y$10$nuH5Sa4EBCPCANKaRIx5h.7DkJpc.Inn/kn0dpi511v8RGLWSmHqa', 'Amministratore', 'admin');
 
--- INSERISCE ALCUNE SALE DI ESEMPIO
 INSERT IGNORE INTO rooms (name, description, capacity, amenities) VALUES 
 ('Sala Riunioni A', 'Sala al primo piano con proiettore e impianto audio', 10, 'Proiettore, Wi-Fi, Impianto Audio'),
 ('Sala Riunioni B', 'Sala al secondo piano con lavagna interattiva', 8, 'Lavagna Interattiva, Wi-Fi, Monitor'),

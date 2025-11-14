@@ -1,7 +1,7 @@
 services:
 
   db:
-    image: mysql:8.0  
+    image: mysql:5.7  
     container_name: meeting_db  
     environment:  
       MYSQL_ROOT_PASSWORD: rootpassword  
