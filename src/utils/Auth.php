@@ -5,7 +5,9 @@ class Auth {
     private $db;
 
     public function __construct() {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->db = Database::getInstance();
     }
 
@@ -24,7 +26,6 @@ class Auth {
 
     public function logout() {
         session_destroy();
-        session_start(); 
     }
 
     public function isLoggedIn() {

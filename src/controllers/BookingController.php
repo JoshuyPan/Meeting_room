@@ -50,6 +50,8 @@ class BookingController {
                 $error = 'Sala non valida';
             } elseif (strtotime($bookingDate) < strtotime(date('Y-m-d'))) {
                 $error = 'Non puoi prenotare per date passate';
+            } elseif ($this->bookingModel->hasConflict($roomId, $bookingDate, $startTime, $endTime)) {
+                $error = 'Sala già prenotata in questo orario';
             } else {
                 try {
                     $this->bookingModel->create(

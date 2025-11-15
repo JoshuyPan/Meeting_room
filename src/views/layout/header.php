@@ -4,22 +4,16 @@
     $currentUser = $auth->getCurrentUser();
 ?>
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Prenotazione Sale</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <style>
-        .navbar-brand { font-weight: bold; }
-        .sidebar { min-height: calc(100vh - 56px); }
-        .room-card { transition: transform 0.2s; }
-        .room-card:hover { transform: translateY(-2px); }
-        .booking-conflict { background-color: #ffe6e6; }
-    </style>
+    <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/index.php">
@@ -86,19 +80,20 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <?php if (isset($_SESSION['error'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show">
-                <?= $_SESSION['error'] ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-            <?php unset($_SESSION['error']); ?>
-        <?php endif; ?>
+    <main class="flex-grow-1">
+        <div class="container mt-4">
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <?= $_SESSION['error'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <?php unset($_SESSION['error']); ?>
+            <?php endif; ?>
 
-        <?php if (isset($_SESSION['success'])): ?>
-            <div class="alert alert-success alert-dismissible fade show">
-                <?= $_SESSION['success'] ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-            <?php unset($_SESSION['success']); ?>
-        <?php endif; ?>
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <?= $_SESSION['success'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>

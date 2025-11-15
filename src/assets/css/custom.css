@@ -1,3 +1,21 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrap {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
 /* Stili personalizzati per il sistema prenotazioni */
 :root {
     --primary-color: #3498db;
@@ -32,6 +50,10 @@
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
+}
+
+.sidebar {
+    min-height: calc(100vh - 56px);
 }
 
 .card-header {

@@ -1,6 +1,7 @@
-    </div>
+        </div>
+    </main>
 
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="bg-dark text-light py-4">
         <div class="container text-center">
             <p>&copy; 2025 Sistema Prenotazione Sale. Tutti i diritti riservati.</p>
         </div>
