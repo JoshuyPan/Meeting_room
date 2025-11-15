@@ -8,11 +8,9 @@
             </div>
             <div class="card-body">
                 <?php if (!empty($error)): ?>
-                    <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-                <?php endif; ?>
-
-                <?php if (!empty($success)): ?>
-                    <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle"></i> <?= htmlspecialchars($error) ?>
+                    </div>
                 <?php endif; ?>
 
                 <form method="POST" id="bookingForm">
@@ -124,6 +122,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        availabilityAlert.className = 'alert alert-info';
+        availabilityMessage.innerHTML = '<span class="loading"></span> Controllando disponibilità...';
+        availabilityAlert.style.display = 'block';
+        submitBtn.disabled = true;
+
         fetch('/bookings/check_availability.php', {
             method: 'POST',
             headers: {
@@ -142,24 +145,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 availabilityMessage.innerHTML = `<i class="bi bi-exclamation-circle"></i> ${data.message}`;
                 submitBtn.disabled = true;
             }
-            availabilityAlert.style.display = 'block';
         })
         .catch(error => {
+            availabilityAlert.className = 'alert alert-warning';
+            availabilityMessage.innerHTML = `<i class="bi bi-exclamation-triangle"></i> Errore nel controllo disponibilità`;
+            submitBtn.disabled = false;
             console.error('Error:', error);
         });
     }
 
-    // Aggiungi event listeners
     roomSelect.addEventListener('change', checkAvailability);
     dateInput.addEventListener('change', checkAvailability);
     startTimeInput.addEventListener('change', checkAvailability);
     endTimeInput.addEventListener('change', checkAvailability);
 
-    // Check iniziale se ci sono già valori
-    if (roomSelect.value && dateInput.value && startTimeInput.value && endTimeInput.value) {
-        checkAvailability();
+    <?php if (empty($error)): ?>
+        if (roomSelect.value && dateInput.value && startTimeInput.value && endTimeInput.value) {
+            checkAvailability();
+        }
+    <?php endif; ?>
+
+    if (window.history.replaceState && <?= !empty($error) ? 'false' : 'true' ?>) {
+        window.history.replaceState(null, null, window.location.href);
     }
 });
 </script>
+
+<style>
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 
 <?php include __DIR__ . '/../layout/footer.php'; ?>

@@ -64,7 +64,9 @@ class BookingController {
                         $participants, 
                         $notes
                     );
-                    $success = 'Prenotazione creata con successo!';
+                    $_SESSION['success'] = 'Prenotazione creata con successo!';
+                    header('Location: /bookings/index.php');
+                    exit;
                 } catch (Exception $e) {
                     $error = $e->getMessage();
                 }
