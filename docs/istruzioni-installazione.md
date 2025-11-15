@@ -9,7 +9,7 @@
 
 1. **Clona o scarica il progetto**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/JoshuyPan/Meeting_room.git
    cd meeting-room-booking
    ```
 
@@ -18,38 +18,21 @@
     docker compose up -d
 ```
 
-3. **Attendi l'inizializzazione (2-3 minuti)**
+3. **Attendi l'inizializzazione (1-2 minuti)**
 ```bash
-    # Verifica lo stato
     docker compose ps
-
-    # Controlla i log del database
     docker compose logs db
 ```
 
 4. **Accedi all'applicazione**
-    URL: http://localhost:8080
+
+-> URL: http://localhost:8080
 
     Account admin predefinito:
 
         Email: admin@example.com
 
         Password: admin123
-
-## Struttura del Progetto
-
-meeting-room-booking/
-├── docker-compose.yml      # Configurazione Docker
-├── nginx/                  # Configurazione web server
-├── php/                    # Configurazione PHP
-├── mysql/                  # Script inizializzazione DB
-├── src/                    # Codice sorgente
-│   ├── controllers/        # Controller MVC
-│   ├── models/            # Modelli dati
-│   ├── views/             # Template views
-│   ├── utils/             # Utility classes
-│   └── assets/            CSS/JS
-└── docs/                  # Documentazione
 
 ## Testare
 
