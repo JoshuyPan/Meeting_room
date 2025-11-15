@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Validazione in tempo reale
     confirmPassword.addEventListener('input', function() {
         if (password.value !== confirmPassword.value) {
             confirmPassword.setCustomValidity('Le password non coincidono');

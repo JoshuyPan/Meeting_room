@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../../utils/Auth.php';
-$auth = new Auth();
-$currentUser = $auth->getCurrentUser();
+    require_once __DIR__ . '/../../utils/Auth.php';
+    $auth = new Auth();
+    $currentUser = $auth->getCurrentUser();
 ?>
 <!DOCTYPE html>
 <html lang="it">

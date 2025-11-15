@@ -1,9 +1,4 @@
 <?php
-require_once __DIR__ . '/utils/Auth.php';
-
-$auth = new Auth();
-$currentUser = $auth->getCurrentUser();
-
 include __DIR__ . '/views/layout/header.php';
 ?>
 
